@@ -8,12 +8,15 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.util.WPILibVersion;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Gripper;
+import frc.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -24,8 +27,9 @@ import frc.robot.subsystems.Gripper;
 public class Robot extends TimedRobot {
    public static Command m_autonomousCommand;
    public static DriveTrain driveTrain;
-
+   public static Feeder feeder;
    public static Gripper gripper;
+   public static Shooter shooter;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -34,6 +38,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     driveTrain = new DriveTrain(new WPI_TalonSRX(RobotMap.CAN.LEFT), new WPI_TalonSRX(RobotMap.CAN.RIGHT));
+    feeder = new Feeder(new WPI_VictorSPX(RobotMap.CAN.FEEDER));
+    gripper = new Gripper(new WPI_VictorSPX(RobotMap.CAN.GRIPPER));
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
 
