@@ -8,7 +8,7 @@ public class Feed extends CommandBase {
 
     private Feeder feeder;
     private double timeOfStart;
-    public Feed(Feeder feeder, double timeOfStart){
+    public Feed(Feeder feeder){
         this.feeder = feeder;
         this.timeOfStart = Timer.getFPGATimestamp();
         addRequirements(feeder);
