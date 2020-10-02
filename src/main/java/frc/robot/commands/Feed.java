@@ -1,27 +1,27 @@
 package frc.robot.commands;
 
-
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Gripper;
+import frc.robot.subsystems.Feeder;
 
-public class Grip extends CommandBase {
+public class Feed extends CommandBase {
 
-    private Gripper gripper;
+    private Feeder feeder;
     private double timeOfStart;
-    public Grip(Gripper gripper){
-        this.gripper = gripper;
+    public Feed(Feeder feeder, double timeOfStart){
+        this.feeder = feeder;
         this.timeOfStart = Timer.getFPGATimestamp();
-        addRequirements(gripper);
+        addRequirements(feeder);
     }
     @Override
     public void execute(){
-        gripper.grip();
+        feeder.feed();
     }
     @Override
     public boolean isFinished(){
         return (Timer.getFPGATimestamp()-timeOfStart>=500);
     }
     @Override
-    public void end(boolean interrupted) {gripper.stopGripper();}
+    public void end(boolean interrupted) {
+        feeder.stopFeeder();}
 }
