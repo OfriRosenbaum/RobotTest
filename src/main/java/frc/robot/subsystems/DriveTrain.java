@@ -7,6 +7,7 @@ import frc.robot.OI;
 import frc.robot.commands.TankDrive;
 
 public class DriveTrain extends SubsystemBase {
+
     private SpeedController leftSpeedController;
     private SpeedController rightSpeedController;
 
@@ -14,17 +15,19 @@ public class DriveTrain extends SubsystemBase {
         this.leftSpeedController = leftSpeedController;
         this.rightSpeedController = rightSpeedController;
     }
-    public void move(double speedLeft, double speedRight){
+
+    public void move(double speedLeft, double speedRight) {
         leftSpeedController.set(speedLeft);
         rightSpeedController.set(speedRight);
     }
-    public void stop(){
+
+    public void stop() {
         leftSpeedController.stopMotor();
         rightSpeedController.stopMotor();
     }
 
     @Override
-    public Command getDefaultCommand(){
+    public Command getDefaultCommand() {
         return new TankDrive(OI::getLeftY, OI::getRightY, this);
     }
 }

@@ -7,6 +7,7 @@ import frc.robot.commands.Grip;
 import frc.robot.subsystems.Gripper;
 
 public class OI /*GEVALD*/ {
+
     static Joystick left = new Joystick(0);
     static Joystick right = new Joystick(1);
     XboxController xboxController = new XboxController(2);
