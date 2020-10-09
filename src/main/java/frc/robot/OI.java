@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj2.command.button.Button;
 import frc.robot.commands.Feed;
 import frc.robot.commands.Grip;
 import frc.robot.commands.Shoot;
-import frc.robot.subsystems.Gripper;
+
 
 public class OI /*GEVALD*/ {
 
