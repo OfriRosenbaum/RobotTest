@@ -20,7 +20,7 @@ public class Grip extends CommandBase {
     }
     @Override
     public boolean isFinished(){
-        return (Timer.getFPGATimestamp()-timeOfStart>=500);
+        return Timer.getFPGATimestamp()-timeOfStart>=0.5;
     }
     @Override
     public void end(boolean interrupted) {gripper.stopGripper();}
