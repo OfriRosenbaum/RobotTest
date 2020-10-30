@@ -10,4 +10,10 @@ public interface RobotMap {
         public static final int SHOOTER_MASTER=4;
         public static final int SHOOTER_SLAVE=5;
     }
+
+    public interface DIO{
+        public static final int POS_ENCODER=0;
+        public static final int NEG_ENCODER=1;
+        public static final int DIGITAL_INPUT=2;
+    }
 }

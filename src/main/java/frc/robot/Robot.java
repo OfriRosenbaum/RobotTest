@@ -11,6 +11,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.util.WPILibVersion;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -44,10 +46,10 @@ public class Robot extends TimedRobot {
         WPI_TalonSRX master = new WPI_TalonSRX(RobotMap.CAN.SHOOTER_MASTER);
         WPI_VictorSPX slave = new WPI_VictorSPX(RobotMap.CAN.SHOOTER_SLAVE);
         slave.follow(master);
-        shooter = new Shooter(master);
+        shooter = new Shooter(master, new Encoder(RobotMap.DIO.POS_ENCODER, RobotMap.DIO.NEG_ENCODER));
         driveTrain = new DriveTrain(new WPI_TalonSRX(RobotMap.CAN.LEFT), new WPI_TalonSRX(RobotMap.CAN.RIGHT));
         feeder = new Feeder(new WPI_VictorSPX(RobotMap.CAN.FEEDER));
-        gripper = new Gripper(new WPI_VictorSPX(RobotMap.CAN.GRIPPER));
+        gripper = new Gripper(new WPI_VictorSPX(RobotMap.CAN.GRIPPER), new DigitalInput(RobotMap.DIO.DIGITAL_INPUT));
 
         // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
         // autonomous chooser on the dashboard.
