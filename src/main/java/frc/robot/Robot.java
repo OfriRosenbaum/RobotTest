@@ -30,7 +30,6 @@ import frc.robot.subsystems.Shooter;
  */
 public class Robot extends TimedRobot {
 
-    public static Command m_autonomousCommand;
     public static DriveTrain driveTrain;
     public static Feeder feeder;
     public static Gripper gripper;
