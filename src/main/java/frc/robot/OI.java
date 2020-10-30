@@ -6,7 +6,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import frc.robot.commands.Feed;
 import frc.robot.commands.Grip;
-import frc.robot.commands.Shoot;
+import frc.robot.commands.ShootWithPID;
+import frc.robot.subsystems.Shooter;
 
 
 public class OI /*GEVALD*/ {
@@ -31,7 +32,7 @@ public class OI /*GEVALD*/ {
         Button button = new Button(xboxController::getXButton);
         button.whenPressed(new Grip(Robot.gripper).andThen(new Feed(Robot.feeder), new InstantCommand(Robot.feeder::addBall, Robot.feeder)));
         Button button2 = new Button(xboxController::getYButton);
-        button.whenPressed(new Feed(Robot.feeder).andThen(new Shoot(Robot.shooter), new InstantCommand(Robot.feeder::removeBall, Robot.feeder)));
+        button.whenPressed(new Feed(Robot.feeder).andThen(new ShootWithPID(Robot.shooter, Shooter.KP, Shooter.KI, Shooter.KD, Shooter.TOLERANCE,
+                Shooter.SETPOINT), new InstantCommand(Robot.feeder::removeBall, Robot.feeder)));
     }
-
 }
